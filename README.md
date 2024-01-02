@@ -11,7 +11,7 @@
 * An RDS instance is created within the private subnets.
 
 ## Architectural Diagram
-![Untitled Diagram drawio](https://github.com/devops-maestro17/envHorizon/assets/148553140/a21cc0ab-2213-4b1b-bb30-ce8f1ea06b3d)
+![architectural-diagram drawio](https://github.com/devops-maestro17/envHorizon/assets/148553140/eaa69106-6ec2-4c03-805d-d9cf3c44e986)
 
 
 ### Apart from the infrastructure, this project also implements the following Terraform features:
