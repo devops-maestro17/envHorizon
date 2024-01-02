@@ -4,11 +4,11 @@
 
 * A custom VPC having two public and private subnets in each AZ. It also has an internet gateway deployed to enable internet traffic within the VPC and route table to which the public subnets are associated.
   
-* EC2 instance servers are deployed within the public subnets along with security groups attached to them to enable inbound traffic.
+* EC2 instance servers are deployed within the public subnets along with security group attached to them to enable inbound traffic.
 
 * An elastic load balancer is created to distribute the incoming traffic across the servers.
 
-* An RDS instance is created within the private subnets.
+* An RDS instance is created within the private subnets along with security group attached. The database credentials are fetched from HashiCorp Vault
 
 ## Architectural Diagram
 ![architectural-diagram drawio](https://github.com/devops-maestro17/envHorizon/assets/148553140/eaa69106-6ec2-4c03-805d-d9cf3c44e986)
