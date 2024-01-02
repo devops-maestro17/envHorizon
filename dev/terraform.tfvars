@@ -6,6 +6,7 @@ azs                  = ["ap-south-1a", "ap-south-1b"]
 ingress_from_port = {
   "port_1" = 80
   "port_2" = 8080
+  "port_3" = 3306
 }
 ingress_protocol   = "tcp"
 ingress_cidr_block = ["0.0.0.0/0"]

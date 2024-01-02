@@ -2,9 +2,9 @@ provider "aws" {
   region = var.region
 }
 
-# module "statelock-dynamodb" {
-#   source = "../modules/statelock"
-# }
+module "statelock-dynamodb" {
+  source = "../modules/statelock"
+}
 
 module "networking" {
   source               = "../modules/networking"
@@ -49,15 +49,16 @@ module "hashicorp_vault" {
 }
 
 module "rds_instance" {
-  source           = "../modules/database"
-  storage          = var.storage
-  storage_type     = var.storage_type
-  engine           = var.engine
-  engine_version   = var.engine_version
-  instance_class   = var.instance_class
-  db_name          = var.db_name
-  db_user          = module.hashicorp_vault.vault_db_username
-  db_pass          = module.hashicorp_vault.vault_db_password
-  db_subnet_group  = module.networking.aws_private_subnet_ids
-  environment_name = var.environment_name
+  source            = "../modules/database"
+  storage           = var.storage
+  storage_type      = var.storage_type
+  engine            = var.engine
+  engine_version    = var.engine_version
+  instance_class    = var.instance_class
+  db_name           = var.db_name
+  db_user           = module.hashicorp_vault.vault_db_username
+  db_pass           = module.hashicorp_vault.vault_db_password
+  db_subnet_group   = module.networking.aws_private_subnet_ids
+  db_security_group = module.networking.vpc_security_group_id
+  environment_name  = var.environment_name
 }
