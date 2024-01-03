@@ -139,11 +139,21 @@ To start Vault, you can use the following command:
 vault server -dev -dev-listen-address="0.0.0.0:8200"
 ```
 
+Use the token provided in the CLI to login to the Vault UI console
+
+<img width="960" alt="vault-login-page" src="https://github.com/devops-maestro17/envHorizon/assets/148553140/1bb79316-fc5f-4489-966f-a57fa7c4d7fb">
+
+
 **Configure Terraform to read the secret from Vault**
 
 Detailed steps to enable and configure AppRole authentication in HashiCorp Vault:
 
 1. **Enable AppRole Authentication**:
+
+In the Vault UI, go to Access > Authentication Methods > Enable New Method > Click on AppRole > Click on Next and Enable Method
+
+<img width="960" alt="app-role-authentication" src="https://github.com/devops-maestro17/envHorizon/assets/148553140/51793f7e-a7e2-4108-a786-e4d4dd9ceca5">
+
 
 To enable the AppRole authentication method in Vault, we need to use the Vault CLI or the Vault HTTP API.
 
@@ -196,7 +206,7 @@ After creating the AppRole, we need to generate a Role ID and Secret ID pair. Th
 Retrieve the Role ID using the Vault CLI:
 
 ```bash
-vault read auth/approle/role/my-approle/role-id
+vault read auth/approle/role/terraform/role-id
 ```
 
 Save the Role ID for use in the Terraform configuration.
@@ -206,10 +216,21 @@ Save the Role ID for use in the Terraform configuration.
 To generate a Secret ID, use the following command:
 
 ```bash
-vault write -f auth/approle/role/my-approle/secret-id
+vault write -f auth/approle/role/terraform/secret-id
    ```
 
 This command generates a Secret ID and provides it in the response. Save the Secret ID securely, as it will be used for Terraform authentication.
+
+**Creating Secret Engine and add the database credentials**
+
+Go to the Secret Engine Tab in the UI and create e Key Value secret
+
+<img width="960" alt="secret-engine" src="https://github.com/devops-maestro17/envHorizon/assets/148553140/7d62027b-b4e9-4f20-a7c6-19211a9ef75c">
+
+Add the database username and password 
+
+<img width="960" alt="creds" src="https://github.com/devops-maestro17/envHorizon/assets/148553140/8b855fa6-3a5a-4210-ad67-7a7442850467">
+
 
 
 ### Deploying the infrastructure
